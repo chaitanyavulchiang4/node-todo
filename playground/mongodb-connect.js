@@ -7,18 +7,7 @@ if(err) {
 }
 
 console.log('Connected to mongoDB');
-// db.collection('Todos').insertOne({
-//         text: 'some thing to do',
-//         completed:false
-//     }, (err, result) => {
-//         if(err) {
-//             return console.log('unable to add to MongoDB');
-//         }
-//         console.log(JSON.stringify(result.ops, undefined, 2));
-//
-//
-//
-// });
+
 
 db.collection('Users').insertOne({
         name: 'sirisha',

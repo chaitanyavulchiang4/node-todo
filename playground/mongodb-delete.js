@@ -11,15 +11,7 @@ if(err) {
 console.log('Connected to mongoDB');
 
 
-//
-// db.collection('Users').find({_id: new ObjectID('5ab914454ab93807cc171731')}).toArray().then((docs) => {
-//
-//
-// console.log(JSON.stringify(docs, undefined, 2));
-//
-// }, (e) => {
-// console.log('no way');
-// });
+
 
 
 // // DeleteMany

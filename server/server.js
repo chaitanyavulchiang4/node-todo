@@ -10,16 +10,12 @@ var {User} = require('./models/user.js');
 
 var app = express();
 
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 
 
 app.post('/todos', (req, res)=> {
-
-    // console.log('req', req.body);
-    // console.log('res', res);
-
-// res.send(Todo);
-
 
 var todo = new Todo({
     text: req.body.text
@@ -75,6 +71,34 @@ res.send({todo});
 });
 
 
-app.listen(3000, () => {
-    console.log('server started in 3000');
+// Delete
+
+app.delete('/todos/:id', (req, res) => {
+
+    var id = req.params.id;
+
+    if(!ObjectID.isValid(id)) {
+        return res.status(404).send;
+    }
+
+
+Todo.findByIdAndRemove(id).then((todo) => {
+
+    if(!todo) {
+        return res.status(404).send();
+
+    }
+
+    res.send({todo});
+}).catch((e) => {
+    return res.status(404).send();
+
+});
+
+});
+
+
+
+app.listen(port, () => {
+    console.log('server started in', port);
 })
